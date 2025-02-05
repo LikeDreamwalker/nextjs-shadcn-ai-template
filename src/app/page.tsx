@@ -26,32 +26,31 @@ export default function Home() {
 
         <Card className="w-full max-w-2xl">
           <CardHeader>
-            <CardTitle>nextjs-shadcn-template</CardTitle>
+            <CardTitle>nextjs-shadcn-ai-template</CardTitle>
             <CardDescription>
               Get started by editing src/app/page.tsx
             </CardDescription>
           </CardHeader>
           <CardContent>
             <p className="mb-4">
-              A simple template with Next.js 15 and shadcn/ui.
+              A simple template with Next.js 15 and shadcn/ui and ai-sdk.
               <br />
-              Build by LikeDreamwalker with Vercel, v0 and love❤️.
+              Build by LikeDreamwalker with and love❤️.
             </p>
-            <ul className="list-disc list-inside space-y-2">
-              <li>Customizable components</li>
-              <li>Dark mode support</li>
-              <li>Accessibility-first design</li>
-              <li>Easy to integrate with Next.js</li>
-            </ul>
+            <Button asChild>
+              <Link href="/custom-service">
+                Use AI SDK to link with custom AI Service
+              </Link>
+            </Button>
           </CardContent>
           <CardFooter className="flex justify-between">
-            <Button asChild>
+            <Button variant="secondary" asChild>
               <Link
-                href="https://ui.shadcn.com/"
+                href="https://sdk.vercel.ai/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Learn shadcn/ui
+                Learn AI SDK
               </Link>
             </Button>
             <Badge variant="outline">v0.1.0</Badge>
@@ -101,57 +100,6 @@ export default function Home() {
           </Button>
         </div>
       </main>
-
-      <footer className="flex gap-6 flex-wrap items-center justify-center">
-        <Button variant="link" asChild>
-          <Link
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              src="/file.svg"
-              alt="File icon"
-              width={16}
-              height={16}
-              className="mr-2"
-            />
-            Learn
-          </Link>
-        </Button>
-        <Button variant="link" asChild>
-          <Link
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              src="/window.svg"
-              alt="Window icon"
-              width={16}
-              height={16}
-              className="mr-2"
-            />
-            Examples
-          </Link>
-        </Button>
-        <Button variant="link" asChild>
-          <Link
-            href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              src="/globe.svg"
-              alt="Globe icon"
-              width={16}
-              height={16}
-              className="mr-2"
-            />
-            Go to nextjs.org →
-          </Link>
-        </Button>
-      </footer>
     </div>
   );
 }
