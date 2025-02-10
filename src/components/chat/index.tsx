@@ -1,7 +1,7 @@
 "use client";
 
 import { useChat } from "ai/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Input } from "@/components/ui/input";
@@ -9,13 +9,17 @@ import { Button } from "@/components/ui/button";
 import { SendHorizontal, User, Bot } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { MemoizedMarkdown } from "@/components/memoized-markdown";
+
 export default function Chat() {
   const { messages, input, handleInputChange, handleSubmit, error } = useChat({
-    maxSteps: 5,
-    experimental_throttle: 50,
+    api: "/api/chat",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  useEffect(() => {
+    console.log(messages, "?>?>?>asd");
+    return () => {};
+  }, [messages]);
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);

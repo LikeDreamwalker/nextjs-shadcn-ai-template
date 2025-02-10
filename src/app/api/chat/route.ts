@@ -2,6 +2,8 @@ import { streamText } from "ai";
 
 import { createDeepSeek } from "@ai-sdk/deepseek";
 
+import { customOpenAI } from "@/lib/providers/custom-openai";
+
 const customFetch = async (
   url: string | Request | URL,
   options: RequestInit | undefined
@@ -37,13 +39,17 @@ export const maxDuration = 30;
 
 export async function POST(req: Request) {
   const { messages } = await req.json();
+  console.log("Request Messages:", JSON.stringify(messages, null, 2));
+
   const result = streamText({
-    model: deepseek("deepseek-chat"),
+    model: customOpenAI("gpt-4"),
+    // model: deepseek("deepseek_r1"),
     messages,
   });
 
   return result.toDataStreamResponse({
     getErrorMessage: errorHandler,
+    sendReasoning: true,
   });
 }
 
@@ -58,7 +64,7 @@ export function errorHandler(error: unknown) {
   }
 
   if (error instanceof Error) {
-    // console.log("error instanceof Error", error);
+    console.log("error instanceof Error", error);
     return error.message;
   }
 
